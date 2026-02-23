@@ -1,0 +1,2 @@
+export EXPO_PUBLIC_API=https://a9014df2c6f4.ngrok-free.app/api
+export EXPO_PUBLIC_FOTO_API=https://a9014df2c6f4.ngrok-free.app/uploads

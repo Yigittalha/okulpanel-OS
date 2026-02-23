@@ -1,0 +1,65 @@
+platform :ios, '15.1'
+use_frameworks! :linkage => :static
+install! 'cocoapods', :deterministic_uuids => false
+
+require File.join(File.dirname(`node --print "require.resolve('expo/package.json')"`), "scripts/autolinking") rescue nil
+require File.join(File.dirname(`node --print "require.resolve('react-native/package.json')"`), "scripts/react_native_pods") rescue nil
+require 'json'
+podfile_properties = JSON.parse(File.read(File.join(__dir__, 'Podfile.properties.json'))) rescue {}
+ENV['RCT_NEW_ARCH_ENABLED'] = '0' if podfile_properties['newArchEnabled'] == 'false'
+
+project 'OkulPanel.xcodeproj'
+
+target 'OkulPanel' do
+  use_expo_modules! rescue nil
+
+  config = (defined?(use_native_modules!) ? use_native_modules! : {})
+  use_react_native!(
+    :path => (config[:reactNativePath] || "../node_modules/react-native"),
+    :hermes_enabled => true,
+    :fabric_enabled => false,
+    :app_path => "#{Pod::Config.instance.installation_root}/.."
+  )
+
+  # AVIF desteği: libavif (varsayılan libaom decoder)
+  pod 'SDWebImageAVIFCoder'
+  pod 'libavif'                # CocoaPods varsayılanı libaom'dur
+
+  pre_install do |installer|
+    # Firebase & Google zinciri: static framework + modül
+    installer.pod_targets.each do |pod|
+      name = pod.name
+      if %w[
+        FirebaseCore FirebaseCoreInternal FirebaseInstallations
+        FirebaseAnalytics FirebaseAuth FirebaseMessaging FirebaseFirestore
+        GoogleUtilities GoogleAppMeasurement GTMSessionFetcher
+        nanopb abseil
+      ].any? { |p| name.start_with?(p) }
+        def pod.build_type; Pod::BuildType.static_framework end
+      end
+    end
+  end
+
+  post_install do |installer|
+    require 'fileutils'
+    react_native_post_install(installer)
+
+    # 1) glog: NO_THREADS fix
+    installer.pods_project.targets.each do |t|
+      next unless t.name.downcase.include?('glog')
+      t.build_configurations.each do |cfg|
+        defs = Array(cfg.build_settings['GCC_PREPROCESSOR_DEFINITIONS']) + ['NO_THREADS=1','GLOG_NO_ABBREVIATED_SEVERITIES']
+        cfg.build_settings['GCC_PREPROCESSOR_DEFINITIONS'] = defs.uniq
+      end
+    end
+
+    # 2) react_runtime modulemap çakışması temizliği
+    installer.pods_project.files.each do |f|
+      f.remove_from_project if f.path.to_s.include?('React-jsitooling.modulemap')
+    end
+    Dir.glob('Pods/**/react_runtime/**/React-jsitooling.modulemap').each { |p| FileUtils.rm_f(p) }
+    Dir.glob('Pods/Headers/**/react_runtime/**/React-jsitooling.modulemap').each { |p| FileUtils.rm_f(p) }
+
+    # 3) libdav1d ile ilgili tüm özel ayarlar kaldırıldı - artık libavif+aom kullanıyoruz
+  end
+end

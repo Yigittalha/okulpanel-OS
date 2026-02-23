@@ -1,0 +1,10 @@
+---
+alwaysApply: true
+---
++[DISPATCHER] Önce CORE; sonra yalnız tetiklenen en fazla 1–2 TRIGGER; tetik yoksa YOK SAY.
++[CORE] JS only; Drawer/Stack; axios interceptor; UI yalnız style-objeleri; tema #0D1B2A/#FFD60A; tüm ağ POST+api_contract.json; auth/nav dokunma; patch≤15 satır ≤2 dosya; format Plan→Files→Patch→Notes; no polling/move/rename; log min (PII ****).
++[TRIGGER: DESIGN — APPLIES WHEN UI/STİL] spacing/typografi/renk/radius/motion/a11y; kontrast≥4.5; touch≥44dp; anim 200–300ms; reduceMotion; referans yoksa tema varsayılanı.
++[TRIGGER: API — APPLIES WHEN ENDPOINT/CONTRACT] tüm istekler POST; endpoint+metot sözleşmeye birebir; belirsizde 1 net soru sor, sonra devam.
++[TRIGGER: SHORT-THINK — APPLIES WHEN UZUYOR] plan≤3 madde; açıklama≤6 satır; tek ekranda tek iyileştirme; kararsızsan 1 soru→patch.
++[TRIGGER: STOP & ESCALATE — APPLIES WHEN LİMİT AŞIMI] patch>15 satır veya>2 dosya / yeni paket / sözleşme belirsiz / nav-auth etkisi / refaktör → kodu durdur, kısa PR planı (amaç, kapsam, risk, test).
++[TRIGGER: A11Y & QUALITY — APPLIES WHEN UI ÇIKTISI] label/Hint; ikon tek başına değil; loading/empty/error göster; TR metin/i18n tutarlı.

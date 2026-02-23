@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "modules": {
+    "AllStudentsScreen": {
+      "status": "APPROVED",
+      "last_updated": "2025-01-10",
+      "features": [
+        "Filtre çubuğu (İsim arama + Sınıf seçimi + Okul No + Ara butonu)",
+        "Anlık isim araması (klavyeden yazarken)",
+        "Modal tabanlı sınıf ve okul no seçimi",
+        "Alt boşluk (paddingBottom: 100)"
+      ],
+      "constraints": [
+        "POST-only istekler",
+        "Ara butonu minWidth: 120 (küçülmez)",
+        "Navigasyon/Auth'a dokunma",
+        "Safe-area kuralları korunur",
+        "Anlık filtreleme korunmalı"
+      ],
+      "approval_count": 3
+    }
+  },
+  "global_constraints": [
+    "POST-only istekler",
+    "Endpoint isimlerini değiştirme",
+    "Navigasyon/Auth yapısına dokunma",
+    "Design tokens ortak kaynaktan kullan"
+  ]
+}

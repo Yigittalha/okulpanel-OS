@@ -1,0 +1,59 @@
+{
+  "expo": {
+    "name": "Okul Panel",
+    "slug": "school-app",
+    "version": "1.0.0",
+    "owner": "huseyin22",
+    "orientation": "portrait",
+    "icon": "./assets/logo1024.png",
+    "userInterfaceStyle": "light",
+    "newArchEnabled": false,
+    "splash": {
+      "image": "./assets/ic_launcher.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#FFFFFF"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.huseyin22.schoolapp",
+      "workspace": "ios/OkulPanel.xcworkspace"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/ic_launcher.png",
+        "backgroundColor": "#FFFFFF"
+      },
+      "edgeToEdgeEnabled": true,
+      "package": "com.huseyin22.schoolapp",
+      "googleServicesFile": "./google-services.json",
+      "permissions": ["POST_NOTIFICATIONS"],
+      "notification": {
+        "icon": "y/notification-icon.png"
+      }
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      "expo-secure-store",
+      "expo-system-ui",
+      "@react-native-firebase/app",
+      "@react-native-firebase/messaging",
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "compileSdkVersion": 35,
+            "targetSdkVersion": 35,
+            "minSdkVersion": 24
+          }
+        }
+      ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "2ab144ac-50e7-4758-9fbb-502311558a83"
+      }
+    }
+  }
+}

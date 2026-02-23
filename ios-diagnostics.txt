@@ -1,0 +1,101 @@
+
+=== RN/Expo ===
+info Fetching system and libraries information...
+System:
+  OS: macOS 15.6.1
+  CPU: (8) arm64 Apple M2
+  Memory: 117.86 MB / 8.00 GB
+  Shell:
+    version: "5.9"
+    path: /bin/zsh
+Binaries:
+  Node:
+    version: 20.19.4
+    path: /usr/local/bin/node
+  Yarn: Not Found
+  npm:
+    version: 10.8.2
+    path: /usr/local/bin/npm
+  Watchman: Not Found
+Managers:
+  CocoaPods:
+    version: 1.16.2
+    path: /opt/homebrew/bin/pod
+SDKs:
+  iOS SDK:
+    Platforms:
+      - DriverKit 24.4
+      - iOS 18.4
+      - macOS 15.4
+      - tvOS 18.4
+      - visionOS 2.4
+      - watchOS 11.4
+  Android SDK: Not Found
+IDEs:
+  Android Studio: 2025.1 AI-251.26094.121.2512.13991807
+  Xcode:
+    version: 16.3/16E140
+    path: /usr/bin/xcodebuild
+Languages:
+  Java:
+    version: 17.0.16
+    path: /usr/bin/javac
+  Ruby:
+    version: 2.6.10
+    path: /usr/bin/ruby
+npmPackages:
+  "@react-native-community/cli":
+    installed: 20.0.1
+    wanted: ^20.0.1
+  react:
+    installed: 19.0.0
+    wanted: 19.0.0
+  react-native:
+    installed: 0.79.5
+    wanted: 0.79.5
+  react-native-macos: Not Found
+npmGlobalPackages:
+  "*react-native*": Not Found
+Android:
+  hermesEnabled: Not found
+  newArchEnabled: Not found
+iOS:
+  hermesEnabled: Not found
+  newArchEnabled: false
+
+info React Native v0.81.4 is now available (your project is running on v0.79.5).
+info Changelog: https://github.com/facebook/react-native/releases/tag/v0.81.4
+info Diff: https://react-native-community.github.io/upgrade-helper/?from=0.79.5&to=0.81.4
+info For more info, check out "https://reactnative.dev/docs/upgrading?os=macos".
+Running 17 checks on your project...
+13/17 checks passed. 4 checks failed. Possible issues detected:
+Use the --verbose flag to see more details about passed checks.
+
+✖ Check Expo config (app.json/ app.config.js) schema
+Error validating fields in /Users/yigit/Desktop/okul-panel-mobile-updated.v6-main/app.json:
+ Field: android - should NOT have additional property 'notification'.
+Advice:
+Resolve schema errors in your app config. Learn more: https://docs.expo.dev/workflow/configuration/
+
+✖ Check that required peer dependencies are installed
+Missing peer dependency: expo-font
+Required by: @expo/vector-icons
+Advice:
+Install missing required peer dependency with "npx expo install expo-font"
+Your app may crash outside of Expo Go without this dependency. Native module peer dependencies must be installed directly.
+
+✖ Check for app config fields that may not be synced in a non-CNG project
+This project contains native project folders but also has native configuration properties in app.json, indicating it is configured to use Prebuild. When the android/ios folders are present, EAS Build will not sync the following properties: orientation, icon, userInterfaceStyle, splash, ios, android, plugins. 
+
+
+✖ Check that packages match versions required by installed Expo SDK
+The following packages should be updated for best compatibility with the installed expo version:
+  @react-native-async-storage/async-storage@1.24.0 - expected version: 2.1.2
+Your project may not work correctly until you install the expected versions of the packages.
+Found outdated dependencies
+Advice:
+Use 'npx expo install --check' to review and upgrade your dependencies.
+To ignore specific packages, add them to "expo.install.exclude" in package.json. Learn more: https://expo.fyi/dependency-validation
+
+
+=== PODS (lock) ===
