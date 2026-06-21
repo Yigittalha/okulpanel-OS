@@ -1,2 +1,2 @@
-# okul-panel-mobile-1.1.5-Vers
+# okul-panel-mobile-1.2.0-Vers
 # okulpanel-OS
